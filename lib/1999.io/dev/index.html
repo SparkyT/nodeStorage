@@ -1,0 +1,546 @@
+<html>
+	<head>
+		<title id="idPageTitle">1999.io</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		
+		<script src="http://fargo.io/code/jquery-1.9.1.min.js"></script><link href="http://fargo.io/code/bootstrap.css" rel="stylesheet"><script src="http://fargo.io/code/bootstrap.min.js"></script><link rel="stylesheet" href="http://fargo.io/code/fontAwesome/css/font-awesome.min.css"/><link href="http://fargo.io/code/ubuntuFont.css" rel="stylesheet" type="text/css"><link href="http://fargo.io/code/ranchoFont.css" rel="stylesheet" type="text/css"><script src="http://fargo.io/code/node/shared/utils.js"></script><script src="http://fargo.io/code/node/shared/alertdialog.js"></script><script src="http://fargo.io/code/node/shared/confirmdialog.js"></script><script src="http://fargo.io/code/node/shared/askdialog.js"></script><script src="http://fargo.io/code/strftime.js"></script><script src="http://fargo.io/code/shared/ga.js"></script><script src="http://fargo.io/code/shared/app.js"></script><script src="http://fargo.io/code/shared/menus.js"></script><link href="http://fargo.io/code/shared/menus.css" rel="stylesheet" type="text/css"><link href="http://fargo.io/code/shared/app.css" rel="stylesheet" type="text/css"><script src="http://fargo.io/code/shared/appprefs.js"></script><script src="http://fargo.io/code/shared/beep.js"></script>
+		
+		<script src="http://fargo.io/code/autosize/autosize2.js"></script> 
+		<script src="http://fargo.io/code/markdownConverter.js"></script>
+		<script src="http://fargo.io/code/shared/emojify.js"></script>
+		
+		<script src="http://fargo.io/code/shared/xml.js"></script>
+		<script src="http://fargo.io/code/concord.js"></script>
+		<script src="http://fargo.io/code/concordKeyboard.js" /></script>
+		<script src="http://fargo.io/code/shared/outliner.js"></script>
+		<script src="http://fargo.io/code/shared/outlinedialog.js?v=0"></script>
+		<script src="http://fargo.io/code/shared/buildrss.js"></script> 
+		<script src="http://fargo.io/code/storage/api.js"></script>
+		<script src="http://fargo.io/code/imagesize/imagesize.js"></script>
+		<script src="http://fargo.io/code/shared/xml.js"></script>
+		<script src="http://fargo.io/code/browsers/outlinebrowser.js"></script>
+		<script src="http://fargo.io/code/shared/facebook.js"></script>
+		<script src="http://fargo.io/code/imagesize/imagesize.js"></script>
+		<script src="http://fargo.io/code/shared/imagedialog.js"></script>
+		
+		<script src="//cdn.jsdelivr.net/medium-editor/latest/js/medium-editor.min.js"></script>
+		<link rel="stylesheet" href="//cdn.jsdelivr.net/medium-editor/latest/css/medium-editor.min.css" type="text/css" media="screen" charset="utf-8">
+		
+		
+		<link rel="stylesheet" href="http://fargo.io/code/editors/mediumeditor/dist/css/themes/default.css"> 
+		
+		
+		<script src="http://fargo.io/code/browsers/instantoutline/code.js"></script>
+		
+		<script src="http://fargo.io/code/shared/motd.js"></script>
+		<link rel="stylesheet" href="http://fargo.io/code/shared/motd.css" type="text/css">
+		
+		<script src="chat.js"></script>
+		<link href="chat.css" rel="stylesheet" type="text/css">
+		
+		<!-- Facebook metadata -->
+			<meta property="og:type" content="website" />
+			<meta property="og:title" content="1999.io" />
+			<meta property="og:description" content="1999.io is blogging software that's easy to set up and use, with all the open features that blogging had in the year it all came together -- 1999." />
+			<meta property="og:site_name" content="1999.io" />
+		<!-- Twitter metadata -->
+			<meta name="twitter:card" content="summary_large_image">
+			<meta name="twitter:site" content="@1999io">
+			<meta name="twitter:title" content="1999.io">
+			<meta name="twitter:description" content="1999.io is blogging software that's easy to set up and use, with all the open features that blogging had in the year it all came together -- 1999.">
+		
+		<style>
+			body {
+				font-family: Ubuntu;
+				font-size: 18px;
+				background-color: whitesmoke;
+				}
+			.divPageBody {
+				width: 60%;
+				margin-top: 70px;
+				margin-left: auto;
+				margin-right: auto;
+				margin-bottom: 400px;
+				}
+			.divEditorAndButtons {
+				width: 80%;
+				margin-left: auto;
+				margin-right: auto;
+				}
+			.divVersionNumber {
+				font-size: 12px;
+				color: #777777;
+				float: right;
+				padding: 19px;
+				}
+			.btnSave {
+				float: right;
+				width: 120px;
+				}
+			
+			
+			
+			@media only screen 
+			and (min-device-width : 320px) 
+			and (max-device-width : 480px) {
+				.desktopOnly { /* items that only display in desktop version */
+					display: none;
+					}
+				.divPageBody {
+					width: 98%;
+					margin-left: 1%;
+					margin-right: 1%;
+					margin-top: 5px;
+					font-size: 16px;
+					}
+				.divMenubar .container {
+					width: 98%;
+					margin-left: auto;
+					margin-right: auto;
+					}
+				 #idMenuProductName {
+					}
+				.navbar .brand {
+					padding-right: 10px;
+					}
+				.divVersionNumber {
+					display: none;
+					}
+				.navbar .nav.pull-right {
+					float: none;
+					}
+				.divMenubar .navbar .nav > li > a {
+					font-size: 15px;
+					padding-left: 4px;
+					padding-right: 4px;
+					}
+				.divEditBox {
+					width: 100%;
+					margin-left: auto;
+					margin-right: auto;
+					margin-top: 55px;
+					border: none;
+					}
+				.divEditBox .divTextEntryPart {
+					box-shadow: none;
+					padding-top: 5px;
+					padding-left: 0;
+					padding-right: 0;
+					padding-bottom: 0;
+					}
+				.divTopOfPageEditor {
+					margin-bottom: 5px;
+					}
+				.editInPlaceTextArea {
+					min-width: 0;
+					}
+				.divInPlaceTextArea {
+					min-width: 0;
+					}
+				.editReplyTextArea {
+					width: inherit;
+					}
+				.spScreenName {
+					display: none;
+					}
+				.divReplies .divMsgText { /* 11/10/15 by DW */
+					width: inherit;
+					}
+				.divTextEntryIcon {
+					display: none;
+					}
+				.divEditBox .divTextEntryPart {
+					width: 100%;
+					}
+				}
+			
+			
+			@media only screen 
+			and (min-device-width : 481px) 
+			and (max-device-width : 768px) {
+				.divPageBody {
+					width: 85%;
+					margin-left: auto;
+					margin-right: auto;
+					margin-top: 5px;
+					font-size: 16px;
+					}
+				.divMenubar .container {
+					width: 700px;
+					}
+				.divMenubar .navbar .nav > li > a {
+					font-size: 15px;
+					padding-left: 4px;
+					padding-right: 4px;
+					}
+				.navbar .nav.pull-right {
+					float: none;
+					}
+				.divVersionNumber {
+					display: none;
+					}
+				}
+			</style>
+		</head>
+	<body>
+		<div class="divPrefsDialog" comment="Create a new incoming hook.">
+			<div id="idNewInHookDialog" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="attEditorLabel" aria-hidden="true">
+				<div class="modal-header">
+					<a href="#" class="close" data-dismiss="modal">&times;</a>
+					</div>
+				<div class="modal-body">
+					<div class="divDialogElements">
+						<fieldset>
+							<div class="divPrefs">
+								<p>Create a new <i>incoming</i> webhook so you can start sending data into <span id="idProductNameForInHook"></span>. All these items are optional, you can leave them blank and defaults will apply.</p>
+								<div class="clearfix">
+									<label for="name">Name:</label>
+									<div class="input">
+										<input class="xlarge prefsInput" id="name" name="name" size="50" type="text" value="" placeholder="The username for an item when it appears in your timeline.">
+										</div>
+									</div>
+								<div class="clearfix">
+									<label for="description">Description:</label>
+									<div class="input">
+										<input class="xlarge prefsInput" id="description" name="description" size="50" type="text" value="" placeholder="Brief description of the incoming hook.">
+										</div>
+									</div>
+								<div class="clearfix">
+									<label for="iconUrl">URL:</label>
+									<div class="input">
+										<input class="xlarge prefsInput" id="iconUrl" name="iconUrl" size="50" type="text" value="" placeholder="Address of an image to use in place of the default icon.">
+										</div>
+									</div>
+								<div class="clearfix">
+									<label for="iconEmoji">Emoji:</label>
+									<div class="input">
+										<input class="xlarge prefsInput" id="iconEmoji" name="iconEmoji" size="50" type="text" value="" placeholder="Name of emoji to use in place of the default icon.">
+										</div>
+									</div>
+								</div>
+							</fieldset>
+						</div>
+					</div>
+				<div class="modal-footer">
+					<a href="#" class="btn" onclick="closeNewInHookDialog (false);">Cancel</a>
+					<a href="#" class="btn btn-primary" onclick="closeNewInHookDialog (true);">Create</a>
+					</div>
+				</div>
+			</div>
+		<div class="divPrefsDialog" comment="Create a new outgoing hook.">
+			<div id="idNewOutHookDialog" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="attEditorLabel" aria-hidden="true">
+				<div class="modal-header">
+					<a href="#" class="close" data-dismiss="modal">&times;</a>
+					</div>
+				<div class="modal-body">
+					<div class="divDialogElements">
+						<fieldset>
+							<div class="divPrefs">
+								<p>Create a new <i>outgoing</i> webhook so you can start sending data from <span id="idProductNameForOutHook"></span>.</p>
+								<div class="clearfix">
+									<label for="urlsToCall">URL(s):</label>
+									<div class="input">
+										<textarea class="xxlarge" id="urlsToCall" name="urlsToCall" cols="70" rows="2" placeholder="A list of URLs of webhooks, one per line." ></textarea>
+										</div>
+									</div>
+								<div class="clearfix">
+									<label for="triggerWords">Trigger words:</label>
+									<div class="input">
+										<input class="xlarge prefsInput" id="triggerWords" name="triggerWords" size="50" type="text" value="" placeholder="When a line starts with one of these words, post to the URL(s) above." />
+										</div>
+									</div>
+								<div class="clearfix">
+									<label for="description">Description:</label>
+									<div class="input">
+										<input class="xlarge prefsInput" id="description" name="description" size="50" type="text" value="" placeholder="Brief description of the outgoing hook." />
+										</div>
+									</div>
+								</div>
+							</fieldset>
+						</div>
+					</div>
+				<div class="modal-footer">
+					<a href="#" class="btn" onclick="closeNewOutHookDialog (false);">Cancel</a>
+					<a href="#" class="btn btn-primary" onclick="closeNewOutHookDialog (true);">Create</a>
+					</div>
+				</div>
+			</div>
+		<div class="divSetMetadataDialog">
+			<div id="idSetMetadataDialog" class="modal hide fade" tabindex="-1" role="dialog" aria-hidden="true">
+				<div class="modal-header">
+					<a href="#" class="close" data-dismiss="modal">&times;</a>
+					<h3>Set metadata for the post...</h3>
+					</div>
+				<div class="modal-body">
+					<div class="divDialogElements">
+						<fieldset>
+							<div class="divPrefs">
+								<div class="clearfix">
+									<label for="metaTitle">Title:</label>
+									<div class="input">
+										<input class="xlarge prefsInput" id="idMetaTitle" name="shortTitle" size="50" type="text" value="" placeholder="The title included in the Twitter and Facebook metadata.">
+										</div>
+									</div>
+								<div class="clearfix">
+									<label for="metaImage">Image:</label>
+									<div class="input">
+										<input class="xlarge prefsInput" id="idMetaImage" name="longTitle" size="50" type="text" value="" placeholder="The URL of the image displayed in Twitter and Facebook.">
+										</div>
+									</div>
+								<div class="clearfix">
+									<label for="metaAescription">Description:</label>
+									<div class="input">
+										<textarea class="xxlarge" id="idMetaDescription" name="description" cols="70" rows="4" placeholder="Description of the post in the Twitter/Facebook metadata."></textarea>
+										</div>
+									</div>
+								
+								<div class="clearfix">
+									<label for="flDisqusComments"></label>
+									<div class="input">
+										<input type="checkbox" id="idDisqusComments" name="flDisqusComments" value="xxx">&nbsp;Allow comments on this post?
+										</div>
+									</div>
+								
+								
+								</div>
+							</fieldset>
+						</div>
+					</div>
+				<div class="modal-footer">
+					<a href="#" class="btn" onclick="closeMetadataDialog ();">Cancel</a>
+					<a href="#" class="btn btn-primary" onclick="okMetadataDialog ();">OK</a>
+					</div>
+				</div>
+			</div>
+		<div class="divMenubar" id="idMenubar">
+			<div class="topbar-wrapper" style="z-index: 5;">
+				<div class="navbar navbar-fixed-top" data-dropdown="dropdown">
+					<div class="divVersionNumber" id="idVersionNumber">
+						</div>
+					<div class="navbar-inner">
+						<div class="container">
+							<a class="brand" href="/"><span id="idMenuProductName"></span></a>
+							<ul class="nav" id="idMainMenuList">
+								<li class="dropdown" id="idMainMenu" style="display: none;"> 
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown">Main&nbsp;<b class="caret"></b></a>
+									<ul class="dropdown-menu">
+										<li><a onclick="aboutMainMenu ();">About this menu...</a></li>
+										<li class="divider"></li>
+										<li><a onclick="viewMyHomePage ();">View my home page...</a></li>
+										<li><a onclick="viewMyRss ();">View my RSS feed...</a></li>
+										<li class="divider"></li>
+										<li><a onclick="viewMyChatLogJson ();">View my JSON file...</a></li>
+										<li class="divider"></li>
+										<li><a onclick="editMenubar ();">Edit menubar...</a></li>
+										<li><a onclick="editTemplate ();">Edit template...</a></li>
+										<li class="divider"></li>
+										<li><a onclick="publishAllMyPages ();">Re-publish all pages...</a></li>
+										</ul>
+									</li>
+								<li class="dropdown" id="idDocsMenu" style="display: none;"> 
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown">Docs&nbsp;<b class="caret"></b></a>
+									<ul class="dropdown-menu">
+										<li><a onclick="viewDoc ('http://1999.io/about/');">About 1999.io...</a></li>
+										<li class="divider"></li>
+										<li><a onclick="viewDoc ('http://my.1999.io/users/1999io/2016/04/11/0002.html');">Getting started...</a></li>
+										<li><a onclick="viewDoc ('http://my.1999.io/users/1999io/2016/04/11/0005.html');">Terminology...</a></li>
+										<li><a onclick="viewDoc ('http://my.1999.io/users/1999io/2016/04/11/0006.html');">Story pages...</a></li>
+										<li><a onclick="viewDoc ('http://my.1999.io/users/1999io/2016/04/11/0004.html');">Technical overview...</a></li>
+										<li><a onclick="viewDoc ('http://my.1999.io/users/1999io/2016/04/11/0003.html');">Philosophy...</a></li>
+										<li class="divider"></li>
+										<li><a onclick="viewDoc ('https://groups.google.com/forum/?fromgroups#!forum/1999-user');">Support...</a></li>
+										</ul>
+									</li>
+								<li class="dropdown" id="idGuestMenu" style="display: none;"> 
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown">Guest&nbsp;<b class="caret"></b></a>
+									<ul class="dropdown-menu">
+										<li><a onclick="aboutGuestMenu ();">About this menu...</a></li>
+										<li class="divider"></li>
+										<li><a onclick="viewGuestHomePage ();">View home page...</a></li>
+										<li><a onclick="viewGuestRss ();">View RSS feed...</a></li>
+										</ul>
+									</li>
+								<li class="dropdown" id="idEditorsMenu" style="display: none;"> 
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown">Editors&nbsp;<b class="caret"></b></a>
+									<ul class="dropdown-menu" id="idEditorsList">
+										</ul>
+									</li>
+								<li class="dropdown" id="idPlugInsMenu" style="display: none;"> 
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown">PlugIns&nbsp;<b class="caret"></b></a>
+									<ul class="dropdown-menu" id="idPlugInsList">
+										</ul>
+									</li>
+								<li class="dropdown" id="idDaveMenu" style="display: none;"> 
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown">Dave&nbsp;<b class="caret"></b></a>
+									<ul class="dropdown-menu">
+										<li><a onclick="postATweet ();">Post a tweet...</a></li>
+										<li><a onclick="postAnOpmlFile ();">Post an OPML file...</a></li>
+										<li><a onclick="postAnInstantOutline ();">Post an Instant Outline...</a></li>
+										<li><a onclick="postPicture ();">Post an image...</a></li>
+										<li><a onclick="blockMessage ();">Block message...</a></li>
+										<li><a onclick="openChatLogJson ();">ChatLog JSON</a></li>
+										<li class="disabled"><a onclick="alertDialog ('You should not see this.');">Disabled command...</a></li>
+										<li><a onclick="davesSetImageMenuItem ();">Weird Set Image...</a></li>
+										<li><a onclick="loadFullChatLog ();">Load all posts</a></li>
+										<li><a onclick="testPaste ()">Insert HTML</a></li>
+										</ul>
+									</li>
+								<li class="dropdown" id="idChatLogsMenu"> 
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span id="idChatLogsMenuTitle"></span>&nbsp;<b class="caret"></b></a>
+									<ul class="dropdown-menu" id="idChatLogsList">
+										</ul>
+									</li>
+								<li class="dropdown" id="idMessageOfTheDayMenu"> 
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown" onclick="motdClick ()"><i class="fa" id="idMotdIcon"></i>&nbsp;<b class="caret"></b></a>
+									<ul class="dropdown-menu ulMotdDropdownMenu">
+										<li><div class="divMessageOfTheDayText" id="idMessageOfTheDayText"></li> 
+										</ul>
+									</li>
+								
+								
+								</ul>
+							<ul class="nav pull-right">
+								<li class="dropdown">
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown"><span id="idTwitterIcon"></span><span id="idTwitterUsername"></span>&nbsp;<b class="caret"></b></a>
+									<ul class="dropdown-menu">
+										<li><a onclick="aboutDialog ();">About <span id="idMenuAboutProductName"></span>...</a></li>
+										<li class="divider"></li>
+										<li id="idSettingsMenuItem"><a onclick="settingsCommand ();">Settings...</a></li>
+										<li class="divider"></li>
+										<li><a onclick="fbToggleConnectCommand ();" id="idFacebookConnectMenuItem"></a></li>
+										<li><a onclick="twitterToggleConnect ();" id="idTwitterConnectMenuItem"></a></li>
+										</ul>
+									</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		<div class="divReplyDialog">
+			<div id="idReplyDialog" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="windowTitleLabel" aria-hidden="true">
+				<div class="modal-header">
+					<a href="#" class="close" data-dismiss="modal">&times;</a>
+					<h3 id="idReplyDialogPrompt" class="divReplyDialogPrompt"></h3>
+					</div>
+				<div class="modal-body">
+					<textarea id="idReplyDialogInput" class="taReplyDialog" placeholder="Obviously this is a good place to reply to that thing."></textarea>
+					</div>
+				<div class="modal-footer">
+					<a href="#" class="btn" onclick="cancelReplyDialog ();" style="width: 80px; margin-left: 5px;">Cancel</a>
+					<a href="#" class="btn btn-primary" onclick="okReplyDialog ();" style="width: 80px; margin-left: 5px;">OK</a>
+					</div>
+				</div>
+			</div>
+		<div class="divPrefsDialog" comment="This is the Settings dialog.">
+			<div id="idPrefsDialog" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="windowTitleLabel" aria-hidden="true">
+				<div class="modal-body">
+					<div class="divDialogElements">
+						<form method="POST">
+	<div class="divTabsFromOutline">
+	<div class="tabbable">
+		<ul class="nav nav-tabs" data-tabs="tabs">
+			<li class="active" ><a href="#idPages8"  data-toggle="tab">Pages</a></li>
+			<li><a href="#idAccess8"  data-toggle="tab">Access</a></li>
+			<li><a href="#idFeed8"  data-toggle="tab">Feed</a></li>
+			<li><a href="#idDisqus8"  data-toggle="tab">Disqus</a></li>
+			<li><a href="#idMisc8"  data-toggle="tab">Misc</a></li>
+			</ul>
+		<div id="my-tab-content" class="tab-content">
+			<div class="active tab-pane" id="idPages8">
+				<fieldset>
+					<div class="divPrefs">	<p>This information is included on each published page.</p><div class="clearfix">	<label for="siteName">Site name:</label>	<div class="input">		<input class="xlarge prefsInput" id="siteName" name="siteName" size="50" type="text" value="" placeholder="The name you want to appear in the menubar of each published page." />		</div>	</div><div class="clearfix">	<label for="authorName">Your name:</label>	<div class="input">		<input class="xlarge prefsInput" id="authorName" name="authorName" size="50" type="text" value="" placeholder="The name we use for the author in your posts." />		</div>	</div><div class="clearfix">	<label for="urlBlogHome">URL:</label>	<div class="input">		<input class="xlarge prefsInput" id="urlBlogHome" name="urlBlogHome" size="50" type="text" value="" placeholder="The page we point to from your site name, above." />		</div>	</div><div class="clearfix">	<label for="copyright">Copyright:</label>	<div class="input">		<input class="xlarge prefsInput" id="copyright" name="copyright" size="50" type="text" value="" placeholder="Your copyright notice, appears at the bottom of published pages." />		</div>	</div><div class="clearfix">	<label for="authorFacebookAccount">Facebook:</label>	<div class="input">		<input class="xlarge prefsInput" id="authorFacebookAccount" name="authorFacebookAccount" size="50" type="text" value="" placeholder="Your Facebook user name." />		</div>	</div><div class="clearfix">	<label for="authorGithubAccount">GitHub:</label>	<div class="input">		<input class="xlarge prefsInput" id="authorGithubAccount" name="authorGithubAccount" size="50" type="text" value="" placeholder="Your GitHub user name." />		</div>	</div><div class="clearfix">	<label for="authorLinkedInAccount">LinkedIn:</label>	<div class="input">		<input class="xlarge prefsInput" id="authorLinkedInAccount" name="authorLinkedInAccount" size="50" type="text" value="" placeholder="Your LinkedIn user name." />		</div>	</div><div class="clearfix">	<label for="flShowMenubarInStoryPage"></label>	<div class="input">		<input type="checkbox" name="flShowMenubarInStoryPage" value=xxx>&nbsp;Include the menubar on story pages?		</div>	</div>	</div>
+					</fieldset>
+						</div>
+					<div class="tab-pane" id="idAccess8">
+						<fieldset>
+							<div class="divPrefs">	<p>The people who work with you on this blog. They can create new posts, and comment, but they cannot change the settings for the site.</p><div class="clearfix">	<label for="collaborators">Collaborators:</label>	<div class="input">		<textarea class="xxlarge" id="collaborators" name="collaborators" cols="70" rows="3"placeholder="A comma or space-separated list of Twitter account IDs." ></textarea>		</div>	</div><div class="clearfix">	<label for="flAnyoneCanReply"></label>	<div class="input">		<input type="checkbox" name="flAnyoneCanReply" value=xxx>&nbsp;Allow anyone who is logged in to comment?		</div>	</div>	</div>
+							</fieldset>
+								</div>
+							<div class="tab-pane" id="idFeed8">
+								<fieldset>
+									<div class="divPrefs">	<div class="clearfix">	<label for="rssTitle">Title:</label>	<div class="input">		<input class="xlarge prefsInput" id="rssTitle" name="rssTitle" size="50" type="text" value="" placeholder="The &lt;title> element for the feed." />		</div>	</div><div class="clearfix">	<label for="rssLink">Link:</label>	<div class="input">		<input class="xlarge prefsInput" id="rssLink" name="rssLink" size="50" type="text" value="" placeholder="The &lt;link> element for the feed." />		</div>	</div><div class="clearfix">	<label for="rssDescription">Description:</label>	<div class="input">		<textarea class="xxlarge" id="rssDescription" name="rssDescription" cols="70" rows="3"placeholder="The &lt;description> element for the feed." ></textarea>		</div>	</div><div class="clearfix">	<label for="rssInstantArticlesSupport"></label>	<div class="input">		<input type="checkbox" name="rssInstantArticlesSupport" value=xxx>&nbsp;Include support for Facebook Instant Articles.		</div>	</div>	</div>
+									</fieldset>
+										</div>
+									<div class="tab-pane" id="idDisqus8">
+										<fieldset>
+											<div class="divPrefs">	<div class="clearfix">	<label for="flDisqusComments"></label>	<div class="input">		<input type="checkbox" name="flDisqusComments" value=xxx>&nbsp;Include Disqus comments in your posts.		</div>	</div><div class="clearfix">	<label for="disqusGroup">Group:</label>	<div class="input">		<input class="xlarge prefsInput" id="disqusGroup" name="disqusGroup" size="50" type="text" value="" placeholder="The Disqus group name for your comments." />		</div>	</div>	</div>
+											</fieldset>
+												</div>
+											<div class="tab-pane" id="idMisc8">
+												<fieldset>
+													<div class="divPrefs">	<div class="clearfix">	<label for="flChirpOnNewMessage"></label>	<div class="input">		<input type="checkbox" name="flChirpOnNewMessage" value=xxx>&nbsp;Chirp when a new message comes in?		</div>	</div><div class="clearfix">	<label for="flAutoPublish"></label>	<div class="input">		<input type="checkbox" name="flAutoPublish" value=xxx>&nbsp;Automatically publish new posts?		</div>	</div><div class="clearfix">	<label for="flPlugInsMenu"></label>	<div class="input">		<input type="checkbox" name="flPlugInsMenu" value=xxx>&nbsp;Show the PlugIns menu?		</div>	</div><div class="clearfix">	<label for="flEditorsMenu"></label>	<div class="input">		<input type="checkbox" name="flEditorsMenu" value=xxx>&nbsp;Show the Editors menu?		</div>	</div><div class="clearfix">	<label for="urlGlossaryOpml">Glossary URL:</label>	<div class="input">		<input class="xlarge prefsInput" id="urlGlossaryOpml" name="urlGlossaryOpml" size="50" type="text" value="" placeholder="The URL of the glossary OPML file you want to use." />		</div>	</div><div class="clearfix">	<label for="googleAnalyticsAccount">Google ID:</label>	<div class="input">		<input class="xlarge prefsInput" id="googleAnalyticsAccount" name="googleAnalyticsAccount" size="50" type="text" value="" placeholder="The identifier for your Google Analytics account." />		</div>	</div>	</div>
+													</fieldset>
+														</div>
+													</div>
+												</div>
+											</div>
+
+	</form>
+
+						</div>
+					</div>
+				<div class="modal-footer">
+					<a href="#" class="btn" onclick="prefsCloseDialog ();">Cancel</a>
+					<a href="#" class="btn btn-primary" onclick="prefsOkClicked ();">OK</a>
+					</div>
+				</div>
+			</div>
+		<div class="divPageBody">
+			<div class="divChatApp" id="idEditor" style="display: none;">
+				<div class="divEditBox" id="idEditBox">
+					<div class="divTextEntryPart">
+						<div class="divTextEntryIcon" id="idTextEntryIcon">
+							<img id="idEditBoxIcon" width="48" height="48" border="0">
+							</div>
+						<div class="divTextEntryBox" id="idTextEntryBox">
+							
+							<textarea class="divTopOfPageEditor" id="idTextArea">
+								</textarea>
+							
+							<button id="idSubmitButton" class="btn btnSubmit" onclick="submitButtonClick ()"><i class="fa fa-check"></i>&nbsp;Post</button>
+							<div class="divEditorMenu">
+								<select id="idEditorMenuSelect" onchange="editorMenuSelect ();">
+									<option value="markdown">Markdown editor</option>
+									<option value="wizzy">Wizzy editor</option>
+									</select>
+								</div>
+							
+							<div class="divEditorStatusBox" id="idEditorStatusBox">
+								</div>
+							
+							</div>
+						</div>
+					</div>
+				<div class="divChatLog" id="idChatLog">
+					</div>
+				<div class="divMoreButton" id="idMoreButton" style="display: none;">
+					<center>
+						<button id="idMoreButton" class="btn btnMore" onclick="moreButtonClick ()"><i class="fa fa-arrow-down"></i>&nbsp;More</button>
+						</center>
+					</div>
+				</div>
+			<div class="divWholePageMessage" id="idLogonMessage" style="display: none;">
+				<div class="divLogonMessage">
+					<center>
+						Please sign on to Twitter to access your stuff.<br><br>
+						</center>
+					</div>
+				</div>
+			<div class="divWholePageMessage" id="idStartupFailBody" style="display: none;">
+				<div class="divLogonMessage">
+					<center>
+						There was a problem connecting with the server. 
+						Please wait a moment and reload the page.
+						</center>
+					</div>
+				</div>
+			</div>
+		<script>
+			$(document).ready (function () {
+				editorStartup ();
+				});
+			</script>
+		</body>
+	</html>

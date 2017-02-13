@@ -1,0 +1,214 @@
+<html>
+	<head>
+		<title>About 1999.io</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<script src="http://fargo.io/code/jquery-1.9.1.min.js"></script><link href="http://fargo.io/code/bootstrap.css" rel="stylesheet"><script src="http://fargo.io/code/bootstrap.min.js"></script><link rel="stylesheet" href="http://fargo.io/code/fontAwesome/css/font-awesome.min.css"/><link href="http://fargo.io/code/ubuntuFont.css" rel="stylesheet" type="text/css"><link href="http://fargo.io/code/ranchoFont.css" rel="stylesheet" type="text/css"><script src="http://fargo.io/code/node/shared/utils.js"></script><script src="http://fargo.io/code/node/shared/alertdialog.js"></script><script src="http://fargo.io/code/node/shared/confirmdialog.js"></script><script src="http://fargo.io/code/node/shared/askdialog.js"></script><script src="http://fargo.io/code/strftime.js"></script><script src="http://fargo.io/code/shared/ga.js"></script><script src="http://fargo.io/code/shared/app.js"></script><script src="http://fargo.io/code/shared/menus.js"></script><link href="http://fargo.io/code/shared/menus.css" rel="stylesheet" type="text/css"><link href="http://fargo.io/code/shared/app.css" rel="stylesheet" type="text/css"><script src="http://fargo.io/code/shared/appprefs.js"></script><script src="http://fargo.io/code/shared/beep.js"></script>
+		<script src="http://fargo.io/code/shared/xml.js"></script>
+		<script src="http://fargo.io/code/browsers/riverbrowser.js"></script>
+		<script src="http://fargo.io/code/shared/reader.js"></script>
+		<!-- Facebook metadata -->
+			<meta property="og:url" content="http://1999.io/about/" />
+			<meta property="og:type" content="website" />
+			<meta property="og:title" content="How is 1999.io different from other blogging platforms?" />
+			<meta property="og:description" content="1999.io is easy for writers to get started with, is completely customizable by designers, and can be extended by programmers through easy APIs and full access to the server code." />
+			<meta property="og:image" content="http://scripting.com/2016/06/05/1999screen5.png" />
+			<meta property="og:site_name" content="1999.io" />
+		<!-- Twitter metadata -->
+			<meta name="twitter:card" content="summary_large_image">
+			<meta name="twitter:site" content="@1999io">
+			<meta name="twitter:title" content="How is 1999.io different from other blogging platforms?">
+			<meta name="twitter:description" content="1999.io is easy for writers to get started with, is completely customizable by designers, and can be extended by programmers through easy APIs and full access to the server code.">
+			<meta name="twitter:image:src" content="http://scripting.com/2016/06/05/1999screen5.png">
+		<script>
+			var appConsts = {
+				domain: "1999.io", 
+				version: "0.41"
+				}
+			var aboutTitle = "How is 1999.io different from<br>other blogging platforms?";
+			var urlAbout = "about.opml";
+			
+			function everySecond () {
+				}
+			function permalinkTopLevel (theOutline) {
+				if (theOutline.subs !== undefined) {
+					for (var i = 0; i < theOutline.subs.length; i++) {
+						var sub = theOutline.subs [i];
+						if (sub.subs !== undefined) {
+							sub.flPermalink = true;
+							}
+						}
+					}
+				}
+			function expandTopLevel (theOutline) {
+				if (theOutline.subs !== undefined) {
+					for (var i = 0; i < theOutline.subs.length; i++) {
+						theOutline.subs [i].collapse = false;
+						}
+					}
+				}
+			function collapseEverything (theOutline, belowLevel) {
+				function doCollapse (theOutline, level) {
+					if (theOutline.subs !== undefined) {
+						theOutline.collapse = level > belowLevel;
+						for (var i = 0; i < theOutline.subs.length; i++) {
+							doCollapse (theOutline.subs [i], level + 1);
+							}
+						}
+					}
+				doCollapse (theOutline, 0);
+				}
+			function boldTopLevel (theOutline) {
+				if (theOutline.subs !== undefined) {
+					for (var i = 0; i < theOutline.subs.length; i++) {
+						var theSub = theOutline.subs [i];
+						if (theSub.subs === undefined) {
+							theSub.text = "<div class=\"divLevel1HeadNoSubs\">" + theSub.text + "</div>";
+							}
+						else {
+							theSub.text = "<span class=\"spLevel1Head\">" + theSub.text + "</span>";
+							}
+						}
+					}
+				}
+			function startup () {
+				console.log ("startup");
+				$("#idPageTitle").html (aboutTitle);
+				readHttpFile (urlAbout, function (opmltext) {
+					var xstruct = $($.parseXML (opmltext));
+					var adrbody = getXstuctBody (xstruct);
+					var jstruct = outlineToJson (adrbody, "outline");
+					jstruct.text = "";
+					collapseEverything (jstruct, 0);
+					expandTopLevel (jstruct);
+					permalinkTopLevel (jstruct);
+					boldTopLevel (jstruct);
+					$("#idAboutOutline").html (renderOutlineBrowser (jstruct, false, undefined, undefined, true));
+					$("#idPageBody").css ("display", "block");
+					self.setInterval (everySecond, 1000); 
+					hitCounter (); 
+					initGoogleAnalytics (); 
+					});
+				}
+			</script>
+		<style>
+			body {
+				font-family: Ubuntu;
+				font-size: 18px;
+				background-color: whitesmoke;
+				}
+			.divOverlay {
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				margin-left: 0;
+				margin-top: 0;
+				z-index: 20;
+				background-color: black;
+				opacity: 0.2;
+				}
+			.divPageBody {
+				width: 750px;
+				margin-top: 30px;
+				margin-left: auto;
+				margin-right: auto;
+				margin-bottom: 400px;
+				padding: 5px;
+				padding-top: 20px;
+				padding-bottom: 20px;
+				}
+			.divBackgroundImage {
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				margin-left: 0;
+				margin-top: 0;
+				border-top: 1px solid silver;
+				z-index: 10;
+				
+				-webkit-background-size: cover;
+				-moz-background-size: cover;
+				-o-background-size: cover;
+				background-size: cover;
+				background-position: center;
+				background-repeat: no-repeat;
+				}
+			.divPageTitle {
+				text-align: center;
+				font-size: 32px;
+				font-weight: bold;
+				line-height: 135%;
+				margin-bottom: .8em;
+				}
+			.divRenderedOutline .divOutlineText {
+				font-family: "Georgia";
+				font-size: 20px;
+				line-height: 140%;
+				}
+			.ulLevel0 > li {
+				margin-bottom: 20px;
+				}
+			.divRenderedOutline > .divItemHeader {
+				display: none;
+				}
+			.spLevel1Head {
+				font-family: "Ubuntu";
+				font-weight: bold;
+				}
+			.divLevel1HeadNoSubs {
+				margin-bottom: 1.3em;
+				}
+			</style>
+		<style> /* styles for phone */
+			@media only screen 
+			and (min-device-width : 320px) 
+			and (max-device-width : 480px) {
+				.divPageBody {
+					width: 92%;
+					background-color: inherit;
+					border: none;
+					margin: 0;
+					padding: 0;
+					margin-left: auto;
+					margin-right: auto;
+					margin-bottom: 400px;
+					}
+				.divPageTitle {
+					font-size: 24px;
+					margin-bottom: .5em;
+					}
+				.divRenderedOutline .divOutlineText {
+					font-size: 16px;
+					}
+				.divLevel1HeadNoSubs { 
+					margin-bottom: 1em;
+					}
+				.divRenderedOutline .ulOutlineList {
+					margin-left: 10px;
+					}
+				}
+			</style>
+		</head>
+	<body>
+		<div class="divPageBody" id="idPageBody" style="display: none;">
+			<div class="divPageTitle" id="idPageTitle">
+				</div>
+			<div class="divOutlineContainer">
+				<div class="divAboutOutline" id="idAboutOutline">
+					</div>
+				</div>
+			</div>
+		<script>
+			$(document).ready (function () {
+				startup ();
+				});
+			</script>
+		</body>
+	</html>
+ <p>If nothing happens, please click <a href="https://portal.i.arqivawifi.com/hitnew/mik?link_login=https%3A%2F%2Fgateway-free.virginwifi.io%2Flogin&mac=F0%3AD5%3ABF%3AAB%3A7D%3AC7&location_id=PINOTW01&server_name=Premier%5FInn%5FFree&link_orig=http%3A%2F%2F1999.io%2Fabout%2F">here</a></p>
+        <small>Need help? Please visit our <a href="http://www.arqiva.com/support/wifi/">Wi-Fi Support</a> pages</small>
+        <hr/>            
+        <div class="footer">The Wi-Fi at this location is provided by Arqiva, a British company providing infrastructure and broadcast transmission facilities in the UK and Ireland</div>
+    </div>
+</body>
+</html>
